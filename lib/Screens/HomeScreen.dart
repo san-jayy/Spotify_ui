@@ -31,10 +31,19 @@ class Home0 extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
+    return SingleChildScrollView(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: SingleChildScrollView(
+      child: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+              Colors.black,
+              Colors.black,
+              Colors.black,
+              Colors.black,
+            ])),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
