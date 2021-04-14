@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_ui/Constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'primiumCards/primium_plancard.dart';
+import 'primiumCards/pcontainer_card.dart';
 
-class Premium extends StatelessWidget {
+class Premium extends StatefulWidget {
+  @override
+  _PremiumState createState() => _PremiumState();
+}
+
+class _PremiumState extends State<Premium> {
   final controller = PageController(viewportFraction: 0.8);
 
   @override
@@ -43,6 +50,20 @@ class Premium extends StatelessWidget {
                     child: PcontainerCard(
                       c1text: 'Play in shuffle',
                       c2text: 'Play any song',
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, right: 25),
+                    child: PcontainerCard(
+                      c1text: '6 skips per hour',
+                      c2text: 'Unlimited skips',
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, right: 25),
+                    child: PcontainerCard(
+                      c1text: 'Streaming only',
+                      c2text: 'Offline listening',
                     ),
                   ),
                   Padding(
@@ -187,194 +208,6 @@ class Premium extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class PcontainerCard extends StatelessWidget {
-  final String c1text;
-  final String c2text;
-  PcontainerCard({this.c1text, this.c2text});
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          height: 140,
-          width: 160,
-          decoration: BoxDecoration(
-              color: Colors.grey[850],
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(15),
-                  topLeft: Radius.circular(15))),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'FREE',
-                  style: TextStyle(color: Colors.white, letterSpacing: 1),
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Text(c1text,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold))
-            ],
-          ),
-        ),
-        Container(
-          height: 140,
-          width: 160,
-          decoration: BoxDecoration(
-              color: Colors.greenAccent[700],
-              borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(15),
-                  topRight: Radius.circular(15))),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'PREMIUM',
-                  style: TextStyle(color: Colors.white, letterSpacing: 1),
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Text(c2text,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold))
-            ],
-          ),
-        )
-      ],
-    );
-  }
-}
-
-class PrimiumPlanCard extends StatelessWidget {
-  final String cardtitle;
-  final String price;
-  final String duration;
-  final String maintext;
-  final Color gradient1;
-  final Color gradient2;
-  PrimiumPlanCard(
-      {this.cardtitle,
-      this.duration,
-      this.maintext,
-      this.price,
-      this.gradient1,
-      this.gradient2});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 35, vertical: 18),
-      height: 300,
-      width: double.infinity,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          gradient: LinearGradient(
-              colors: [gradient1, gradient2],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight)),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 30,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                cardtitle,
-                //'Premium Family',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Column(
-                children: [
-                  Text(
-                    price,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    duration,
-                    style: TextStyle(
-                        color: Colors.white70,
-                        letterSpacing: 2,
-                        fontSize: 12,
-                        fontWeight: FontWeight.normal),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Text(
-              maintext,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 17,
-                  fontWeight: FontWeight.normal),
-            ),
-          ),
-          FlatButton(
-            onPressed: () {},
-            child: Container(
-              height: 50,
-              width: 200,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25), color: Colors.white),
-              child: Center(
-                child: Text(
-                  'VIEW PLANS',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2),
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 12, left: 16, right: 16),
-            child: Text(
-              'Prices vary according to duration of plan. Terms and conditions apply',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
