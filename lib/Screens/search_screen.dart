@@ -2,19 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:spotify_ui/Constants.dart';
 
 class SearchPage extends StatelessWidget {
-  final List<String> _simages = [
-    'images/b1.jpg',
-    'images/b2.jpg',
-    'images/b3.jpg',
-    'images/b4.jpg',
-    'images/b5.jpg',
-    'images/b6.jpg',
-    'images/s1.jpg',
-    'images/s3.jpg',
-    'images/s4.jpg',
-    'images/s5.jpg',
-    'images/s6.jpg',
-    'images/b2.jpg',
+  List<SearchGrid> _genres = [
+    SearchGrid(image: 'images/b1.jpg', text: 'pop', colour: Colors.green),
+    SearchGrid(
+        image: 'images/b2.jpg', text: 'Hip Hop', colour: Colors.redAccent[700]),
+    SearchGrid(image: 'images/b3.jpg', text: 'Folk', colour: Colors.pink),
+    SearchGrid(
+        image: 'images/b4.jpg', text: 'Bollywood', colour: Colors.blueAccent),
+    SearchGrid(image: 'images/b6.jpg', text: 'Concerts', colour: Colors.blue),
+    SearchGrid(
+        image: 'images/b5.jpg', text: 'New Release', colour: Colors.teal),
+    SearchGrid(
+        image: 'images/s1.jpg', text: 'Charts', colour: Colors.purpleAccent),
+    SearchGrid(
+        image: 'images/s2.jpg', text: 'Made for u', colour: Colors.redAccent),
+    SearchGrid(image: 'images/b3.jpg', text: 'Telugu', colour: Colors.yellow),
+    SearchGrid(image: 'images/b4.jpg', text: 'Punjabi', colour: Colors.purple),
+    SearchGrid(image: 'images/b1.jpg', text: 'Tamil', colour: Colors.green),
+    SearchGrid(image: 'images/b1.jpg', text: 'pop', colour: Colors.green),
+    SearchGrid(
+        image: 'images/b2.jpg', text: 'Hip Hop', colour: Colors.redAccent[700]),
+    SearchGrid(image: 'images/b3.jpg', text: 'Folk', colour: Colors.pink),
+    SearchGrid(
+        image: 'images/b4.jpg', text: 'Bollywood', colour: Colors.blueAccent),
+    SearchGrid(image: 'images/b6.jpg', text: 'Concerts', colour: Colors.blue),
+    SearchGrid(
+        image: 'images/b5.jpg', text: 'New Release', colour: Colors.teal),
+    SearchGrid(
+        image: 'images/s1.jpg', text: 'Charts', colour: Colors.purpleAccent),
+    SearchGrid(
+        image: 'images/s2.jpg', text: 'Made for u', colour: Colors.redAccent),
+    SearchGrid(image: 'images/b3.jpg', text: 'Telugu', colour: Colors.yellow),
+    SearchGrid(image: 'images/b4.jpg', text: 'Punjabi', colour: Colors.purple),
+    SearchGrid(image: 'images/b1.jpg', text: 'Tamil', colour: Colors.green),
   ];
   @override
   Widget build(BuildContext context) {
@@ -62,22 +82,41 @@ class SearchPage extends StatelessWidget {
             height: 15,
           ),
           Expanded(
-            child: GridView.count(
-              crossAxisCount: 2,
-              mainAxisSpacing: 18,
-              crossAxisSpacing: 18,
-              scrollDirection: Axis.vertical,
-              children: _simages
-                  .map(
-                    (item) => Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                              image: AssetImage(item), fit: BoxFit.cover),
-                          color: Colors.white),
-                    ),
-                  )
-                  .toList(),
+            child: NotificationListener<OverscrollIndicatorNotification>(
+              onNotification: (overScroll) {
+                overScroll.disallowGlow();
+                return;
+              },
+              child: GridView.count(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: MediaQuery.of(context).size.width /
+                    (MediaQuery.of(context).size.height / 3.5),
+                children: _genres
+                    .map((item) => Card(
+                          elevation: 10,
+                          color: item.colour,
+                          child: Center(
+                            child: ListTile(
+                              leading: Text(
+                                item.text,
+                                style: ksecondarytextstyle,
+                              ),
+                              trailing: Transform.rotate(
+                                angle: 270,
+                                child: Transform.scale(
+                                  scale: 1.2,
+                                  child: Image(
+                                    image: AssetImage(item.image),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ))
+                    .toList(),
+              ),
             ),
           ),
           SizedBox(
@@ -87,4 +126,11 @@ class SearchPage extends StatelessWidget {
       ),
     );
   }
+}
+
+class SearchGrid {
+  String image;
+  String text;
+  Color colour;
+  SearchGrid({this.image, this.colour, this.text});
 }
