@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_ui/Screens/Library_sc.dart';
+import 'package:spotify_ui/Screens/gridtest.dart';
 import 'Screens/Primium_sc.dart';
 import 'package:spotify_ui/Screens/search_screen.dart';
 import 'Screens/Homepage/HomeScreen.dart';
@@ -33,7 +34,8 @@ class _HomePageState extends State<HomePage> {
   List<Widget> tabs = <Widget>[
     Home0(),
     SearchPage(),
-    LibraryScreen(),
+    //LibraryScreen(),
+    MyGridView(),
     Premium(),
   ];
   @override
