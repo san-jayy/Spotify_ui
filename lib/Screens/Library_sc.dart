@@ -1,7 +1,20 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:spotify_ui/Constants.dart';
-import 'package:spotify_ui/main.dart';
+
+final List<Gridlist> _bgridcontainers = [
+  Gridlist(containerImage: 'images/b1.jpg', title: 'Release Radar'),
+  Gridlist(containerImage: 'images/b3.jpg', title: 'Happy-O-Happy'),
+  Gridlist(containerImage: 'images/b4.jpg', title: 'Bollywood 2.0'),
+  Gridlist(containerImage: 'images/b2.jpg', title: 'Bandi Beats'),
+  Gridlist(containerImage: 'images/b5.jpg', title: 'Bollywood Mash'),
+  Gridlist(containerImage: 'images/b6.jpg', title: 'Bombay Bantai'),
+  Gridlist(containerImage: 'images/s1.jpg', title: 'Sound of bengaluru'),
+  Gridlist(containerImage: 'images/s2.jpg', title: 'Sound of Delhi'),
+  Gridlist(containerImage: 'images/s4.jpg', title: 'Sound of Chennai'),
+  Gridlist(containerImage: 'images/s5.jpg', title: 'Sound of Mumbai'),
+  Gridlist(containerImage: 'images/s6.jpg', title: 'Sound of Hyderabad'),
+  Gridlist(containerImage: 'images/s3.jpg', title: 'Sound of Kolkatta'),
+];
 
 class LibraryScreen extends StatefulWidget {
   @override
@@ -9,63 +22,61 @@ class LibraryScreen extends StatefulWidget {
 }
 
 class _LibraryScreenState extends State<LibraryScreen> {
+  Color activecolor = Colors.white;
+  Color inactivecolor = Colors.grey;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black,
-      child: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.black,
-            toolbarHeight: kToolbarHeight,
-            bottom: TabBar(
-              unselectedLabelStyle: TextStyle(fontSize: 70),
-              indicatorColor: Colors.transparent,
-              tabs: [
-                Tab(
-                  child: Text(
-                    'Music',
-                    style: kprimarytextstyle,
-                  ),
-                ),
-                Tab(
-                  child: Text(
-                    'Podcast',
-                    style: kprimarytextstyle,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          body: TabBarView(
+        child: Padding(
+      padding: const EdgeInsets.only(top: 12),
+      child: Column(
+        children: [
+          Row(
             children: [
-              Music(),
-              Container(
-                child: Column(
-                  children: [
-                    ListTile(
-                      leading: Image(
-                        image: AssetImage('images/b4.jpg'),
-                      ),
-                      title: Text(
-                        'Muscician',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                    ),
-                  ],
+              TextButton(
+                child: Text(
+                  'Music',
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: activecolor),
                 ),
+                onPressed: () {
+                  setState(
+                    () {
+                      activecolor = Colors.white;
+                      inactivecolor = Colors.grey;
+                    },
+                  );
+                },
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              TextButton(
+                child: Text(
+                  'Podcast',
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: inactivecolor),
+                ),
+                onPressed: () {
+                  setState(() {
+                    activecolor = Colors.grey;
+                    inactivecolor = Colors.white;
+                  });
+                },
               )
-              // Icon(Icons.directions_transit),
-              //Icon(Icons.directions_bike),
             ],
           ),
-        ),
+          Expanded(
+              child: Container(
+                  padding: EdgeInsets.only(right: 60), child: Music())),
+        ],
       ),
-    );
+    ));
   }
 }
 
@@ -88,19 +99,19 @@ class _MusicState extends State<Music> {
             tabs: [
               Tab(
                 child: Text(
-                  'Music',
+                  'PlayList',
                   style: ksecondarytextstyle,
                 ),
               ),
               Tab(
                 child: Text(
-                  'Podcast',
+                  'Artists',
                   style: ksecondarytextstyle,
                 ),
               ),
               Tab(
                 child: Text(
-                  'album',
+                  'Album',
                   style: ksecondarytextstyle,
                 ),
               ),
@@ -109,10 +120,46 @@ class _MusicState extends State<Music> {
         ),
         body: TabBarView(
           children: [
-            Icon(Icons.directions_transit),
-            Icon(Icons.directions_bike),
-            Icon(Icons.directions_transit),
+            Podcast(),
+            Podcast(),
+            Podcast(),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class Gridlist {
+  String containerImage;
+  String title;
+  Gridlist({this.containerImage, this.title});
+}
+
+class Podcast extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Container(
+        padding: EdgeInsets.only(top: 20),
+        color: Colors.black,
+        child: Column(
+          children: _bgridcontainers
+              .map((item) => Padding(
+                    padding: const EdgeInsets.all(.0),
+                    child: ListTile(
+                      leading: Image.asset(item.containerImage),
+                      title: Text(
+                        item.title,
+                        style: ksecondarytextstyle,
+                      ),
+                      subtitle: Text(
+                        item.title,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ))
+              .toList(),
         ),
       ),
     );
