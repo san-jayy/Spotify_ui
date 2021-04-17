@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spotify_ui/Constants.dart';
 
 class SearchPage extends StatelessWidget {
-  List<SearchGrid> _genres = [
+  final List<SearchGrid> _genres = [
     SearchGrid(image: 'images/b1.jpg', text: 'pop', colour: Colors.green),
     SearchGrid(
         image: 'images/b2.jpg', text: 'Hip Hop', colour: Colors.redAccent[700]),
