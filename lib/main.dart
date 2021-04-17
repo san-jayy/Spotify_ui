@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_ui/Screens/Library_sc.dart';
-import 'package:spotify_ui/Screens/gridtest.dart';
-import 'Screens/Primium_sc.dart';
+
+import 'Screens/primiumCards/Primium_sc.dart';
 import 'package:spotify_ui/Screens/search_screen.dart';
 import 'Screens/Homepage/HomeScreen.dart';
 
@@ -34,8 +34,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> tabs = <Widget>[
     Home0(),
     SearchPage(),
-    //LibraryScreen(),
-    MyGridView(),
+    LibraryScreen(),
     Premium(),
   ];
   @override
@@ -43,7 +42,6 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
           backgroundColor: Colors.black,
-          //backgroundColor: Colors.grey[700],
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.white,
@@ -59,19 +57,19 @@ class _HomePageState extends State<HomePage> {
             items: [
               BottomNavigationBarItem(
                   icon: Icon(Icons.home),
-                  title: Text('home'),
+                  label: 'home',
                   backgroundColor: Colors.red),
               BottomNavigationBarItem(
                   icon: Icon(Icons.search),
-                  title: Text('Search'),
+                  label: 'Search',
                   backgroundColor: Colors.green),
               BottomNavigationBarItem(
                   icon: Icon(Icons.list),
-                  title: Text('Your Library'),
+                  label: 'Your Library',
                   backgroundColor: Colors.yellow),
               BottomNavigationBarItem(
                   icon: Icon(Icons.queue_music_outlined),
-                  title: Text('Premium'),
+                  label: 'Premium',
                   backgroundColor: Colors.blue),
             ],
           ),
