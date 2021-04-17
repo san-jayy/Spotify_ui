@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'homeGridContainer.dart';
 import '../../Constants.dart';
+import 'topGrid.dart';
 
 class Home0 extends StatefulWidget {
   @override
@@ -71,14 +72,42 @@ class _Home0State extends State<Home0> {
                 height: 12,
               ),
               Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(11),
-                  //color: Colors.white,
-                  image: DecorationImage(
-                      image: AssetImage('images/b2.jpg'), fit: BoxFit.cover),
+                child: Row(
+                  children: [
+                    Column(
+                      children: [
+                        Tophomegrid(
+                          image: 'images/b6.jpg',
+                          text: 'Top-hits',
+                        ),
+                        Tophomegrid(
+                          image: 'images/b2.jpg',
+                          text: 'Tea-times',
+                        ),
+                        Tophomegrid(
+                          image: 'images/s5.jpg',
+                          text: 'hell',
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Tophomegrid(
+                          image: 'images/s4.jpg',
+                          text: 'Folk',
+                        ),
+                        Tophomegrid(
+                          image: 'images/b5.jpg',
+                          text: 'Evng Beats',
+                        ),
+                        Tophomegrid(
+                          image: 'images/b3.jpg',
+                          text: 'Tollywood',
+                        ),
+                      ],
+                    )
+                  ],
                 ),
-                width: double.infinity,
-                height: 250,
               ),
               SizedBox(
                 height: 20,
@@ -95,7 +124,7 @@ class _Home0State extends State<Home0> {
               ),
               HomeGridContainers(
                 gridContainers: _bgridcontainers,
-                height: 170,
+                height: 180,
               ),
               SizedBox(
                 height: 20,
@@ -109,7 +138,7 @@ class _Home0State extends State<Home0> {
               ),
               HomeGridContainers(
                 gridContainers: _gridContainers,
-                height: 180,
+                height: 175,
               ),
               SizedBox(
                 height: 20,
@@ -128,7 +157,7 @@ class _Home0State extends State<Home0> {
               ),
               HomeGridContainers(
                 gridContainers: _bgridcontainers,
-                height: 190,
+                height: 180,
               ),
               SizedBox(
                 height: 40,
