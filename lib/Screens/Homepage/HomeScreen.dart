@@ -72,6 +72,8 @@ class _Home0State extends State<Home0> {
                 height: 12,
               ),
               Container(
+                height: 220,
+                width: double.infinity,
                 child: Row(
                   children: [
                     Column(
