@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_ui/Constants.dart';
+import 'package:spotify_ui/Screens/play.dart';
 
 class SearchPage extends StatelessWidget {
   final List<SearchGrid> _genres = [
@@ -38,93 +39,101 @@ class SearchPage extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      padding: EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-          Text(
-            'Search',
-            style: kprimarytextstyle,
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(7)),
-            child: TextField(
-              decoration: InputDecoration(
-                  icon: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.search,
-                      color: Colors.black,
-                    ),
-                  ),
-                  hintText: 'Artists,songs,or podcasts',
-                  hintStyle: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold)),
+    return Stack(children: [
+      Container(
+        color: Colors.black,
+        padding: EdgeInsets.all(0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 10,
             ),
-          ),
-          SizedBox(
-            height: 19,
-          ),
-          Text(
-            'Your top genres',
-            style: kprimarytextstyle,
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Expanded(
-            child: NotificationListener<OverscrollIndicatorNotification>(
-              onNotification: (overScroll) {
-                overScroll.disallowGlow();
-                return;
-              },
-              child: GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: MediaQuery.of(context).size.width /
-                    (MediaQuery.of(context).size.height / 3.5),
-                children: _genres
-                    .map((item) => Card(
-                          elevation: 10,
-                          color: item.colour,
-                          child: Center(
-                            child: ListTile(
-                              leading: Text(
-                                item.text,
-                                style: ksecondarytextstyle,
-                              ),
-                              trailing: Transform.rotate(
-                                angle: 270,
-                                child: Transform.scale(
-                                  scale: 1.2,
-                                  child: Image(
-                                    image: AssetImage(item.image),
+            Text(
+              'Search',
+              style: kprimarytextstyle,
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(7)),
+              child: TextField(
+                decoration: InputDecoration(
+                    icon: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.black,
+                      ),
+                    ),
+                    hintText: 'Artists,songs,or podcasts',
+                    hintStyle: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold)),
+              ),
+            ),
+            SizedBox(
+              height: 19,
+            ),
+            Text(
+              'Your top genres',
+              style: kprimarytextstyle,
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Expanded(
+              child: NotificationListener<OverscrollIndicatorNotification>(
+                onNotification: (overScroll) {
+                  overScroll.disallowGlow();
+                  return;
+                },
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: MediaQuery.of(context).size.width /
+                      (MediaQuery.of(context).size.height / 3.5),
+                  children: _genres
+                      .map((item) => Card(
+                            elevation: 10,
+                            color: item.colour,
+                            child: Center(
+                              child: ListTile(
+                                leading: Text(
+                                  item.text,
+                                  style: ksecondarytextstyle,
+                                ),
+                                trailing: Transform.rotate(
+                                  angle: 270,
+                                  child: Transform.scale(
+                                    scale: 1.2,
+                                    child: Image(
+                                      image: AssetImage(item.image),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ))
-                    .toList(),
+                          ))
+                      .toList(),
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-        ],
+            SizedBox(
+              height: 70,
+            ),
+          ],
+        ),
       ),
-    );
+      Positioned(
+        bottom: 0,
+        left: 0,
+        right: 0,
+        child: PlayContainer(),
+      )
+    ]);
   }
 }
 

@@ -15,6 +15,10 @@ class PrimiumPlanCard extends StatelessWidget {
       this.gradient1,
       this.gradient2});
 
+  final String termsAndConditions =
+      'Prices vary according to duration of plan. Terms and conditions apply';
+  final String viewplanText = 'VIEW PLANS';
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,7 +42,6 @@ class PrimiumPlanCard extends StatelessWidget {
             children: [
               Text(
                 cardtitle,
-                //'Premium Family',
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -88,7 +91,7 @@ class PrimiumPlanCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25), color: Colors.white),
               child: Center(
                 child: Text(
-                  'VIEW PLANS',
+                  viewplanText,
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,
@@ -101,7 +104,7 @@ class PrimiumPlanCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 12, left: 16, right: 16),
             child: Text(
-              'Prices vary according to duration of plan. Terms and conditions apply',
+              termsAndConditions,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
