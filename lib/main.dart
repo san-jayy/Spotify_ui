@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_ui/Screens/Library_sc.dart';
-
 import 'Screens/primiumCards/Primium_sc.dart';
 import 'package:spotify_ui/Screens/search_screen.dart';
 import 'Screens/Homepage/HomeScreen.dart';
@@ -58,19 +57,19 @@ class _HomePageState extends State<HomePage> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.home),
                   label: 'home',
-                  backgroundColor: Colors.red),
+                  backgroundColor: Colors.grey[900]),
               BottomNavigationBarItem(
                   icon: Icon(Icons.search),
                   label: 'Search',
-                  backgroundColor: Colors.green),
+                  backgroundColor: Colors.grey[900]),
               BottomNavigationBarItem(
                   icon: Icon(Icons.list),
                   label: 'Your Library',
-                  backgroundColor: Colors.yellow),
+                  backgroundColor: Colors.grey[900]),
               BottomNavigationBarItem(
                   icon: Icon(Icons.queue_music_outlined),
                   label: 'Premium',
-                  backgroundColor: Colors.blue),
+                  backgroundColor: Colors.grey[900]),
             ],
           ),
           body: tabs[_currentindex]),
