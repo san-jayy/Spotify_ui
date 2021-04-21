@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_ui/Constants.dart';
+import 'package:spotify_ui/Screens/play.dart';
 
 final List<Gridlist> _bgridcontainers = [
   Gridlist(containerImage: 'images/b1.jpg', title: 'Release Radar'),
@@ -74,6 +75,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
           Expanded(
               child: Container(
                   padding: EdgeInsets.only(right: 60), child: Music())),
+          PlayContainer()
         ],
       ),
     ));

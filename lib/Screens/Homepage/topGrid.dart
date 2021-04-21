@@ -11,7 +11,7 @@ class Tophomegrid extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Container(
-            width: 176,
+            width: 176.3,
             decoration: BoxDecoration(
                 color: Colors.grey[800],
                 borderRadius: BorderRadius.circular(5),
